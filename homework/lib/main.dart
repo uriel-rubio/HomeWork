@@ -20,6 +20,9 @@ class InicioV extends StatefulWidget {
 // P A N T A L L A    D E     I N I C I O
 class _InicioVState extends State<InicioV> {
   TextEditingController _controller;
+  String texto = '';
+    String textoPag2 = '';
+    var boton = '';
   @override
   void initState() {
     super.initState();
@@ -27,9 +30,7 @@ class _InicioVState extends State<InicioV> {
 
   @override
   Widget build(BuildContext context) {
-    String texto = '';
-    String textoPag2 = '';
-    String boton = '';
+    
     return Scaffold(
       appBar: AppBar(
         title: Text('Tarea 1'),
@@ -74,9 +75,6 @@ class _InicioVState extends State<InicioV> {
                         content: TextField(
                           controller: _controller,
                           onSubmitted: (palabra) {
-                            setState(() {
-                              texto = _controller.text;
-                            });
                             Navigator.of(context).pop();
                             Navigator.push(
                               context,
@@ -114,10 +112,10 @@ class _InicioVState extends State<InicioV> {
                 RaisedButton(
                   child: Text('Página 3'),
                   onPressed: () async {
-                    boton = await Navigator.of(context)
+                    boton = Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) {
                       return TerceraV();
-                    }));
+                    })).toString();
                   },
                 ),
               ],
@@ -246,7 +244,6 @@ class TerceraV extends StatelessWidget {
             RaisedButton(
               child: Text(boton1),
               onPressed: () {
-                print(boton1);
                 Navigator.of(context).pop(boton1);
               },
             ),
@@ -254,7 +251,6 @@ class TerceraV extends StatelessWidget {
             RaisedButton(
               child: Text(boton2),
               onPressed: () {
-                print(boton2);
                 Navigator.of(context).pop(boton2);
               },
             ),
@@ -262,7 +258,6 @@ class TerceraV extends StatelessWidget {
             RaisedButton(
               child: Text(boton3),
               onPressed: () {
-                print(boton3);
                 Navigator.of(context).pop(boton3);
               },
             ),
